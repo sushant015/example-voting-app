@@ -23,8 +23,6 @@ pipeline {
         stage('Build Docker Image') {
             steps {
                 sh "cd vote && sudo docker build . -t 052376543349.dkr.ecr.us-east-1.amazonaws.com/vote:\${BUILD_NUMBER}"
-                sh "sudo aws ecr get-login-password --region us-east-1"
-                sh "sudo docker login --username AWS --password-stdin 052376543349.dkr.ecr.us-east-1.amazonaws.com"
                 sh "sudo docker push 052376543349.dkr.ecr.us-east-1.amazonaws.com/vote:\${BUILD_NUMBER}"
             }
         }
