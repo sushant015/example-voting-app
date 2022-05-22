@@ -24,8 +24,7 @@ pipeline {
             steps {
                 sh "eval \$(aws ecr get-login --no-include-email --region us-east-1) && sleep 2"
                 sh "cd vote && sudo docker build . -t 052376543349.dkr.ecr.us-east-1.amazonaws.com/vote:\${BUILD_NUMBER}"
-                sh "sudo aws ecr get-login --no-include-email --region us-east-1"
-                sh "sudo aws ecr create-repository --repository-name 052376543349.dkr.ecr.us-east-1.amazonaws.com/vote --region us-east-1 || true"
+       
                 sh "sudo docker push 052376543349.dkr.ecr.us-east-1.amazonaws.com/vote:\${BUILD_NUMBER}"
             }
         }
